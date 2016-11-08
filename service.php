@@ -25,6 +25,8 @@ try{
 
 		case "setOwner":	
 			$ownerName = $_GET['ownerName'];
+			$ownerName = strtoupper($ownerName);
+			$ownerName = str_replace(' ', '-', $ownerName);
 
 			exec ("gphoto2 --set-config=/main/settings/ownername=.$ownerName.",$output);
 			echo json_encode(true);					
