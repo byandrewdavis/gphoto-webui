@@ -2,6 +2,7 @@
 
 $(document).on( 'pageinit',function(event){
 	getCamera();
+	getOwner();
 });
 
 
@@ -124,6 +125,16 @@ function getCamera(){
 		dataType : "json",
 		success: function(data){
 			$("#cameraName").html(data.camera);
+		},
+	});
+}
+
+function getOwner(){
+	$.ajax({
+		url: "service.php?action=getOwner",
+		dataType : "json",
+		success: function(data){
+			$("#ownerName").val(data.owner);
 		},
 	});
 }

@@ -25,7 +25,7 @@ try{
 
 		case "setOwner":	
 			$ownerName = $_GET['ownerName'];
-			
+
 			exec ("gphoto2 --set-config=/main/settings/ownername=.$ownerName.",$output);
 			echo json_encode(true);					
 			break;
@@ -57,7 +57,19 @@ try{
 		case "getCamera":
 
 			exec ("gphoto2 --auto-detect", $output);
-			$returnObj->camera = trim(explode("usb", $output[count($output) - 1])[0]);
+			$returnObj->camera = trim(explode("Current", $output[count($output) - 1])[0]);
+			header('Content-Type: application/json');
+			echo json_encode($returnObj);
+	
+			break;
+
+		case "getOwner":
+
+			exec ("gphoto2 --auto-detect --get-config=/main/settings/ownername", $output);
+			$output = explode ('Current',$output);
+			$replaceMe = array(":", ".", " ");
+			$output=trim(str_replace($replaceMe, "", "$output[1]"));
+			$returnObj->owner = $output;
 			header('Content-Type: application/json');
 			echo json_encode($returnObj);
 	

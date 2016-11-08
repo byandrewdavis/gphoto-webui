@@ -1,0 +1,6 @@
+Model                          Port                                            
+----------------------------------------------------------
+Canon EOS 6D                   usb:001,008     
+Label: Owner Name
+Type: TEXT
+Current: .ORANGES.
