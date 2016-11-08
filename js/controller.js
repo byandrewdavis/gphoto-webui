@@ -30,10 +30,15 @@ function setOwner(){
 		textVisible: true,
 		theme: 'a'
 	});
-         
+    
+    var formData = {
+            'ownerName'              : $('input[name=ownerName]').val(),
+            'authorName'             : $('input[name=authorName]').val()
+        };     
 	
 	$.ajax({
-		url: "service.php?action=setOwner&ownerName=test",
+		url: "service.php?action=setOwner",
+		data     : formData,
 		dataType : "json",
 		success: function(data){
 			$.mobile.loading( 'hide');
