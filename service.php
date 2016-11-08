@@ -31,6 +31,15 @@ try{
 			exec ("gphoto2 --set-config=/main/settings/ownername=.$ownerName.",$output);
 			echo json_encode(true);					
 			break;
+		case "setArtist":	
+			$artistName = $_GET['artistName'];
+			$artistName = strtoupper($artistName);
+			$artistName = str_replace(' ', '-', $artistName);
+
+			exec ("gphoto2 --set-config=/main/settings/artist=.$artistName.",$output);
+			echo json_encode(true);					
+			break;
+
 		case "takePicture":
 			exec ("gphoto2 --capture-image-and-download --filename \"./images/capture-%Y%m%d-%H%M%S-%03n.%C\"",$output);
 			echo json_encode(true);					
@@ -73,10 +82,16 @@ try{
 			$returnObj->owner = trim(str_replace($replaceMe, "", "$output[1]"));;
 			header('Content-Type: application/json');
 			echo json_encode($returnObj);
-			//var_dump($returnObj);
-
-	
 			break;
+		case "getArtist":
+			exec ("gphoto2 --auto-detect --get-config=/main/settings/artist", $output);
+			$output = explode('Current',$output[5]);
+			$replaceMe = array(":", ".", " ");
+			$returnObj->artist = trim(str_replace($replaceMe, "", "$output[1]"));;
+			header('Content-Type: application/json');
+			echo json_encode($returnObj);
+			break;
+
 		
 		case "getImages":
 	

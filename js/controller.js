@@ -137,6 +137,19 @@ function getOwner(){
 		success: function(data){
 			console.log(data);
 			$("#ownerName").val(data.owner);
+			getartist();
+		},
+	});
+}
+
+function getArtist(){
+	$.ajax({
+		url: "service.php?action=getArtist",
+		dataType : "json",
+		success: function(data){
+			console.log(data);
+			$("#artistName").val(data.artist);
+			
 		},
 	});
 }
