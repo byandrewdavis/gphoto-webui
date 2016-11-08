@@ -69,8 +69,9 @@ try{
 			$output = explode('Current',$output);
 			$replaceMe = array(":", ".", " ");
 			$returnObj->owner = trim(str_replace($replaceMe, "", "$output[1]"));;
-			header('Content-Type: application/json');
-			echo json_encode($returnObj);
+			var_dump($output);
+			//header('Content-Type: application/json');
+			//echo json_encode($returnObj);
 	
 			break;
 		
