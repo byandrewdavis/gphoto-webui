@@ -66,9 +66,13 @@ try{
 		case "getOwner":
 
 			exec ("gphoto2 --auto-detect --get-config=/main/settings/ownername", $output);
-		
-			var_dump($output);
-			
+			$output = explode('Current',$output[5]);
+			$replaceMe = array(":", ".", " ");
+			$returnObj->owner = trim(str_replace($replaceMe, "", "$output[1]"));;
+			//header('Content-Type: application/json');
+			//echo json_encode($returnObj);
+			var_dump($returnObj);
+
 	
 			break;
 		
