@@ -23,6 +23,10 @@ $returnObj;
 try{
 	switch($action){
 
+		case "setOwner":	
+			exec ("gphoto2 --set-config=/main/settings/ownername=\".$file.'\"",$output);
+			echo json_encode(true);					
+			break;
 		case "takePicture":
 			exec ("gphoto2 --capture-image-and-download --filename \"./images/capture-%Y%m%d-%H%M%S-%03n.%C\"",$output);
 			echo json_encode(true);					
