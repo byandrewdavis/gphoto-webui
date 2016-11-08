@@ -57,7 +57,7 @@ try{
 		case "getCamera":
 
 			exec ("gphoto2 --auto-detect", $output);
-			$returnObj->camera = trim(explode("Current", $output[count($output) - 1])[0]);
+			$returnObj->camera = trim(explode("usb", $output[count($output) - 1])[0]);
 			header('Content-Type: application/json');
 			echo json_encode($returnObj);
 	
