@@ -23,6 +23,24 @@ function takePicture(){
 	});
 }
 
+function setOwner(){
+	
+	$.mobile.loading( 'show', {
+		text: 'Setting Owner....',
+		textVisible: true,
+		theme: 'a'
+	});
+         
+	
+	$.ajax({
+		url: "service.php?action=setOwner&ownerName=test",
+		dataType : "json",
+		success: function(data){
+			$.mobile.loading( 'hide');
+		},
+	});
+}
+
 
 $(document).on( "pageshow","#gallery", function( event ) {
 	$.ajax({
