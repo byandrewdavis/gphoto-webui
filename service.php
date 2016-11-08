@@ -24,7 +24,7 @@ try{
 	switch($action){
 
 		case "setOwner":	
-			exec ("gphoto2 --set-config=/main/settings/ownername=\".$file.'\"",$output);
+			exec ("gphoto2 --set-config=/main/settings/ownername=\".$ownerName.'\"",$output);
 			echo json_encode(true);					
 			break;
 		case "takePicture":
