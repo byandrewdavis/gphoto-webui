@@ -82,7 +82,8 @@ try{
 
 		case "getOwner":
 
-			exec ("gphoto2 --auto-detect --get-config=/main/settings/ownername", $output);
+			//exec ("gphoto2 --auto-detect --get-config=/main/settings/ownername", $output);
+			$output=shell_exec("sudo gphoto2 --get-config=/main/settings/ownername=");
 			$output = explode('Current',$output[5]);
 			$replaceMe = array(":", ".", " ");
 			$returnObj->owner = trim(str_replace($replaceMe, "", "$output[1]"));;
