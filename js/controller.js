@@ -48,6 +48,25 @@ function setOwner(){
 }
 
 
+function shutdown(){
+	
+	$.mobile.loading( 'show', {
+		text: 'Shutting Down....',
+		textVisible: true,
+		theme: 'a'
+	});
+        
+	
+	$.ajax({
+		url: "service.php?action=shutdown",
+		dataType : "json",
+		success: function(data){
+			$.mobile.loading( 'hide');
+			alert('Going Down');
+		},
+	});
+}
+
 $(document).on( "pageshow","#gallery", function( event ) {
 	$.ajax({
 		url: "service.php?action=getImages",
