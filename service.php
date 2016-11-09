@@ -32,21 +32,20 @@ try{
 			$ownerName = strtoupper($ownerName);
 			$ownerName = str_replace(' ', '-', $ownerName);
 
-			exec ("sudo gphoto2 --set-config=/main/settings/ownername=.$ownerName.",$output);
-			echo json_encode($output);	
-
+			exec ("gphoto2 --set-config=/main/settings/ownername=.$ownerName.",$output);
+			echo json_encode(true);					
 			break;
 		case "setArtist":	
 			$artistName = $_GET['artistName'];
 			$artistName = strtoupper($artistName);
 			$artistName = str_replace(' ', '-', $artistName);
 
-			exec ("sudo gphoto2 --set-config=/main/settings/artist=.$artistName.",$output);
+			exec ("gphoto2 --set-config=/main/settings/artist=.$artistName.",$output);
 			echo json_encode(true);					
 			break;
 
 		case "takePicture":
-			exec ("sudo gphoto2 --capture-image-and-download --filename \"./images/capture-%Y%m%d-%H%M%S-%03n.%C\"",$output);
+			exec ("gphoto2 --capture-image-and-download --filename \"./images/capture-%Y%m%d-%H%M%S-%03n.%C\"",$output);
 			echo json_encode(true);					
 			break;
 	
@@ -72,7 +71,7 @@ try{
 		
 		case "getCamera":
 
-			exec ("sudo gphoto2 --auto-detect", $output);
+			exec ("gphoto2 --auto-detect", $output);
 			$returnObj->camera = trim(explode("usb", $output[count($output) - 1])[0]);
 			header('Content-Type: application/json');
 			echo json_encode($returnObj);
