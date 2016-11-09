@@ -137,7 +137,7 @@ function getOwner(){
 		success: function(data){
 			console.log(data);
 			$("#ownerName").val(data.owner);
-			getartist();
+			
 		},
 	});
 }
