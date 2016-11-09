@@ -43,6 +43,7 @@ function setOwner(){
 		dataType : "json",
 		success: function(data){
 			$.mobile.loading( 'hide');
+			getOwner();
 		},
 	});
 }

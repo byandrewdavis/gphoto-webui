@@ -32,7 +32,9 @@ try{
 			$ownerName = strtoupper($ownerName);
 			$ownerName = str_replace(' ', '-', $ownerName);
 
-			exec ("gphoto2 --set-config=/main/settings/ownername=.$ownerName.",$output);
+			//exec ("gphoto2 --set-config=/main/settings/ownername=.$ownerName.",$output);
+			$output=shell_exec("sudo gphoto2 --set-config=/main/settings/ownername=$ownerName");
+
 			echo json_encode(true);					
 			break;
 		case "setArtist":	
