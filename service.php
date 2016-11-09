@@ -22,6 +22,10 @@ $returnObj;
 
 try{
 	switch($action){
+		case "shutdown":	
+			exec ("sudo shutdown -P now",$output);
+			echo json_encode(true);					
+			break;
 
 		case "setOwner":	
 			$ownerName = $_GET['ownerName'];
